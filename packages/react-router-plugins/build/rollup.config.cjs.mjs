@@ -3,8 +3,9 @@ import copy from 'rollup-plugin-copy'
 
 const config = Object.assign({}, base, {
     output: {
-        dir: 'dist/esm',
-        format: 'es',
+        dir: 'dist/cjs',
+        format: 'cjs',
+        exports: 'auto', // 明确指定 CommonJS 导出模式
         sourcemap: false
     },
     preserveModules: true,
@@ -13,9 +14,9 @@ const config = Object.assign({}, base, {
         copy({
             targets: [{
                 src: 'src/*',
-                dest: 'dist/esm'
+                dest: 'dist/cjs'
             }]
-        }),
+        })
     ]
 })
 
