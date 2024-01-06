@@ -8,7 +8,6 @@
     "router": "pnpm run -C packages/react-router-plugins build"
   },
   "keywords": [],
-  "private": "false",
   "author": "",
   "license": "ISC"
 }

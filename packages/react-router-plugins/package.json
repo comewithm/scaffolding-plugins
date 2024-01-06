@@ -12,7 +12,6 @@
   },
   "keywords": [],
   "author": "",
-  "private": "false",
   "license": "ISC",
   "devDependencies": {
     "@babel/preset-env": "^7.23.7",
