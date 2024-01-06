@@ -6,19 +6,21 @@ export default {
     input: './src/index.js',
     output: [
         {
-            file: 'dist/bundle.cjs.js',
+            dir: 'dist/cjs',
             format: 'cjs',
         },
         {
-            file: 'dist/bundle.esm.js',
-            format: 'es'
+            dir: 'dist/esm',
+            format: 'es',
         }
     ],
+    preserveModules: true,
     plugins: [
         resolve(),
         commonjs(),
         babel({
             exclude: 'node_modules/**'
         })
-    ]
+    ],
+    include: './src/template/**',
 }

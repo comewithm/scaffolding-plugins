@@ -2,13 +2,15 @@
   "name": "react-router-plugins",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "cjs/index.js",
+  "module": "esm/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup --config rollup.config.js"
   },
   "keywords": [],
   "author": "",
+  "private": "false",
   "license": "ISC",
   "devDependencies": {
     "@babel/preset-env": "^7.23.7",
