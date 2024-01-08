@@ -1,7 +1,8 @@
 import injectRouter from './injectRouter.js';
+
 export default function apply(api, options) {
     // render template file
-    api.render('./template')
+    api.render(import.meta.url, './template')
 
     // inject import
     const {routerMode} = options
