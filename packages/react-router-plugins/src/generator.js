@@ -16,4 +16,12 @@ export default function apply(api, options) {
         api.injectFileName,
         injectRouter
     )
+
+    // add dependencies to package.json
+    api.addDependenciesToPackage({
+        dependencies: {
+            'react-router': '^5.3.4',
+            'react-router-dom': '^5.3.4',
+        }
+    })
 }
