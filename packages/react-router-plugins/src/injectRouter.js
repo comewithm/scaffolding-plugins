@@ -1,31 +1,39 @@
 
 
-export default (file, api) => {
+export default (file, api, options) => {
+    console.log('api options:', options)
     const j = api.jscodeshift;
     const root = j(file.source)
 
-    const appElement = root.find(j.FunctionDeclaration, {
-        id: { name: 'App' }
-    })
+    const {routerMode} = options
+    const mode = routerMode === 'history' ? 'BrowserRouter' : 'HashRouter'
+    const routerImport = `import {${mode} as Router} from 'react-router-dom';`
+    
+    // inject import
+    const declarations = root.find(j.ImportDeclaration)
 
-    const jsxElement = appElement.find(j.JSXElement, {
+    if(declarations.length) {
+        declarations.at(-1).insertAfter([routerImport])
+    } else {
+        root.get().node.program.body.unshift(routerImport)
+    }
+
+    // add Router
+    const appElement = root.find(j.JSXElement, {
         openingElement: {
-            name: { name: 'div' }
+            name: { name: 'App' }
         }
     })
 
-    jsxElement.replaceWith(path => {
-        console.log(path)
-
-        // 创建HashRouter JSXElement
-        const routerElement = j.jsxElement(
+    appElement.replaceWith((path) => {
+        const router = j.jsxElement(
             j.jsxOpeningElement(j.jsxIdentifier('Router'), []),
             j.jsxClosingElement(j.jsxIdentifier('Router')),
-            [path.node]
+            [path.node],
         )
-
-        return routerElement
+        return router
     })
+
 
     return root.toSource()
 }

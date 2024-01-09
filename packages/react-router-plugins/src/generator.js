@@ -4,17 +4,11 @@ export default function apply(api, options) {
     // render template file
     api.render(import.meta.url, './template')
 
-    // inject import
-    const {routerMode} = options
-    const mode = routerMode === 'history' ? 'BrowserRouter' : 'HashRouter'
-    api.injectImport(
-        api.injectFileName,
-        `import {${mode} as Router} from 'react-router-dom;`
-    )
     // transform code
     api.transformCode(
         api.injectFileName,
-        injectRouter
+        injectRouter,
+        options
     )
 
     // add dependencies to package.json
