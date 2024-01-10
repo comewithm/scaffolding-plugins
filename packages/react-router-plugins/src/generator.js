@@ -1,21 +1,28 @@
 import injectRouter from './injectRouter.js';
+import injectApp from './injectApp.js'
 
 export default function apply(api, options) {
     // render template file
     api.render(import.meta.url, './template')
 
-    // transform code
+    // transform code (main.jsx)
     api.transformCode(
-        api.injectFileName,
+        'src/main.jsx',
         injectRouter,
         options
+    )
+
+    // transform code (App.jsx)
+    api.transformCode(
+        'src/App.jsx',
+        injectApp,
     )
 
     // add dependencies to package.json
     api.addDependenciesToPackage({
         dependencies: {
-            'react-router': '^5.3.4',
-            'react-router-dom': '^5.3.4',
+            'react-router': '^6.20.1',
+            "react-router-dom": "^6.20.1",
         }
     })
 }

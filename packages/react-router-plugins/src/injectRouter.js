@@ -1,30 +1,19 @@
+import { handleDependenciesImports } from "./utils/common.js"
 
-
-export default (file, api, options) => {
-    console.log('api options:', options)
-    const j = api.jscodeshift;
-    const root = j(file.source)
-
+function handleRouterImports(root, j, options) {
     const {routerMode} = options
     const mode = routerMode === 'history' ? 'BrowserRouter' : 'HashRouter'
     const routerImport = `import {${mode} as Router} from 'react-router-dom';`
     
-    // inject import
-    const declarations = root.find(j.ImportDeclaration)
+    handleDependenciesImports(root, j, routerImport)
+}
 
-    if(declarations.length) {
-        declarations.at(-1).insertAfter([routerImport])
-    } else {
-        root.get().node.program.body.unshift(routerImport)
-    }
-
-    // add Router
+function handleRouterCodes(root, j) {
     const appElement = root.find(j.JSXElement, {
         openingElement: {
             name: { name: 'App' }
         }
     })
-
     appElement.replaceWith((path) => {
         const router = j.jsxElement(
             j.jsxOpeningElement(j.jsxIdentifier('Router'), []),
@@ -33,7 +22,18 @@ export default (file, api, options) => {
         )
         return router
     })
+}
+// main.jsx
+export default (file, api, options) => {
+    console.log('api options:', options)
+    const j = api.jscodeshift;
+    const root = j(file.source)
 
+    // handle router imports
+    handleRouterImports(root, j, options)
+
+    // add Router
+    handleRouterCodes(root, j)
 
     return root.toSource()
 }
