@@ -1,5 +1,3 @@
+import generator from './generator.js';
 
-
-import generator from './generator.js'
-
-export default generator
+export default generator;

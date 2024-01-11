@@ -5,9 +5,19 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "router": "pnpm run -C packages/react-router-plugins build"
+    "router": "pnpm run -C packages/react-router-plugins build",
+    "prettier": "prettier --write *.{js,jsx,json,md} packages/**/*.{js,jsx,json,md}",
+    "husky": "husky install",
+    "lint": "lint-staged --allow-empty"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@commitlint/cli": "^18.4.4",
+    "@commitlint/config-conventional": "^18.4.4",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.1.1"
+  }
 }
