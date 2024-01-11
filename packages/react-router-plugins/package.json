@@ -1,6 +1,6 @@
 {
   "name": "praywithheart-react-router-plugins",
-  "version": "0.0.18",
+  "version": "0.0.21",
   "description": "",
   "main": "cjs/index.js",
   "module": "esm/index.js",
