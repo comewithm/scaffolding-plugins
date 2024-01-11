@@ -1,6 +1,7 @@
 import base from './rollup.config.base.mjs'
 import copy from 'rollup-plugin-copy'
 
+
 const config = Object.assign({}, base, {
     output: {
         dir: 'dist/cjs',
@@ -14,7 +15,8 @@ const config = Object.assign({}, base, {
         copy({
             targets: [{
                 src: 'src/*',
-                dest: 'dist/cjs'
+                dest: 'dist/cjs',
+                // rename: (name) => name.replace(/^src\//, '')
             }]
         })
     ]

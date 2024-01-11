@@ -13,7 +13,8 @@ const config = Object.assign({}, base, {
         copy({
             targets: [{
                 src: 'src/*',
-                dest: 'dist/esm'
+                dest: 'dist/esm',
+                // rename: (name) => name.replace(/^src\//, '')
             }]
         }),
     ]

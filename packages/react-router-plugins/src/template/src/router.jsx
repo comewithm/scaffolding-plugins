@@ -1,5 +1,5 @@
 import {useRoutes} from 'react-router-dom'
-import App from './app.jsx'
+import App from './App.jsx'
 
 const routerList = [
     {

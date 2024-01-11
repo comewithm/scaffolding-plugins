@@ -6,10 +6,12 @@ export default {
     input: './src/index.js',
     plugins: [
         resolve(),
-        commonjs(),
-        babel({
-            exclude: 'node_modules/**',
-            babelHelpers: 'bundled'
+        commonjs({
+            extensions: ['.js', '.jsx', '.ts', '.tsx']
         }),
+        // babel({
+        //     exclude: 'node_modules/**',
+        //     babelHelpers: 'bundled'
+        // }),
     ],
 }
