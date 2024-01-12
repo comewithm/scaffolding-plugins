@@ -1,0 +1,24 @@
+{
+  "name": "praywithheart-react-format-plugins",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean:dist": "rimraf dist",
+    "build:es": "rollup --config build/rollup.config.es.mjs",
+    "build:cjs": "rollup --config build/rollup.config.cjs.mjs",
+    "build": "pnpm clean:dist && pnpm build:es && pnpm build:cjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/preset-env": "^7.23.7",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "rimraf": "^5.0.5",
+    "rollup-plugin-copy": "^3.5.0"
+  }
+}
