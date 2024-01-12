@@ -12,7 +12,7 @@ export default function apply(api, options) {
   api.transformCode('src/App.jsx', injectApp);
 
   // add dependencies to package.json
-  api.addDependenciesToPackage({
+  api.addToPackageJSON({
     dependencies: {
       'react-router': '^6.20.1',
       'react-router-dom': '^6.20.1',
