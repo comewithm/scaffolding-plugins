@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "router": "pnpm run -C packages/react-router-plugins build",
+    "format": "pnpm run -C packages/react-format-plugins build",
     "prettier": "prettier --write *.{js,jsx,json,md} packages/**/*.{js,jsx,json,md}",
     "husky": "husky install",
     "lint": "lint-staged"
@@ -19,7 +19,6 @@
     "@babel/preset-env": "^7.23.7",
     "@commitlint/cli": "^18.4.4",
     "@commitlint/config-conventional": "^18.4.4",
-    "babel-eslint": "^10.1.0",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
