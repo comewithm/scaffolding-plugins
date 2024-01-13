@@ -20,5 +20,8 @@
     "@rollup/plugin-node-resolve": "^15.2.3",
     "rimraf": "^5.0.5",
     "rollup-plugin-copy": "^3.5.0"
+  },
+  "dependencies": {
+    "glob": "^10.3.10"
   }
 }
